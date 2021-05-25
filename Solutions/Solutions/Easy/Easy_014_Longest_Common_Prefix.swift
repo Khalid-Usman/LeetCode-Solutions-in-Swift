@@ -48,3 +48,29 @@ struct Easy_014_Longest_Common_Prefix {
         return arr[0]
     }
 }
+
+// Only the below solution is also fine.
+
+extension Collection where Element: StringProtocol {
+
+    func longestCommonPrefix() -> String {
+        guard var prefix = first.map({ String($0) }) else { return "" }
+        for string in dropFirst() {
+            while !string.hasPrefix(prefix) {
+                prefix.removeLast()
+            }
+        }
+        return prefix
+    }
+
+    func longestCommonSuffix() -> String {
+        guard var suffix = first.map({ String($0) }) else { return "" }
+        for string in dropFirst() {
+            while !string.hasSuffix(suffix) {
+                suffix.removeFirst()
+            }
+        }
+        return suffix
+    }
+
+}
