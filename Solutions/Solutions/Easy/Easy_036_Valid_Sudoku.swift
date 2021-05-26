@@ -62,3 +62,28 @@ class Easy_036_Valid_Sudoku {
         return true
     }
 }
+
+
+// Faster solution is given below
+
+func isValidSudoku(_ board: [[Character]]) -> Bool {
+        var rows = Array(repeating: Set<Character>(), count: 9)
+        var columns = Array(repeating: Set<Character>(), count: 9)
+        var boxes = Array(repeating: Array(repeating: Set<Character>(), count: 3), count: 3)
+
+        for row in 0..<9 {
+            for column in 0..<9 {
+                let value = board[row][column]
+
+                if value != "." {
+                    if !rows[row].insert(value).inserted
+                        || !columns[column].insert(value).inserted
+                        || !boxes[row/3][column/3].insert(value).inserted {
+                        return false
+                    }
+                }
+            }
+        }
+
+        return true
+    }
