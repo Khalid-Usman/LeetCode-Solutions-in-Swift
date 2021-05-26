@@ -40,3 +40,34 @@ struct Easy_088_Merge_Sorted_Array {
         }
     }
 }
+
+
+// Other Solution
+
+func mergedArrays(_ array1: [Int], _ array2: [Int]) -> [Int] {
+    var result = [Int]()
+    var i = 0
+    var j = 0
+
+    while i < array1.count && j < array2.count {
+        if array1[i] < array2[j] {
+            result.append(array1[i])
+            i += 1
+        } else {
+            result.append(array2[j])
+            j += 1
+        }
+    }
+
+    while i < array1.count {
+        result.append(array1[i])
+        i += 1
+    }
+
+    while j < array2.count {
+        result.append(array2[j])
+        j += 1
+    }
+
+    return result
+}
