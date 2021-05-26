@@ -64,3 +64,16 @@ struct Easy_067_Add_Binary {
         return s
     }
 }
+
+
+// Fast Solution
+
+func addBinary(a:String, b:String) -> String {
+    guard let _a = Int(a, radix: 2),
+        _b = Int(b, radix: 2) else { return "0" }
+    
+    return String(_a + _b, radix: 2)
+}
+let result = addBinary(a:"11", b:"1")
+print(result)
+
